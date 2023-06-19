@@ -1,0 +1,2 @@
+irun -compile ../gate/my_adder.vhd
+irun -gui ../tb/my_adder_tb.vhd  -top my_adder_tb  -sdf_cmd_file sdf.cmd 
