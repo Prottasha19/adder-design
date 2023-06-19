@@ -1,0 +1,4 @@
+COMPILED_SDF_FILE = "my_adder.sdf.X",
+SCOPE = :DUT,
+MTM_CONTROL = "MAXIMUM",
+SCALE_FACTORS = "1.0:1.0:1.0";
