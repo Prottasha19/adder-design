@@ -1,0 +1,15 @@
+dumpsaif -depth to_cells -output my_adder.saif -scope :DUT
+run
+
+irun ../gate/my_adder.vhd  ../tb/my_adder_tb.vhd  -top my_adder_tb:tst  -sdf_cmd_file sdf.cmd -input do_sim_saif.tcl
+
+cd ../do_synth
+design_vision | tee log/synthesis.log &
+
+read_file -format ddc {./results/my_adder.ddc}
+
+read_saif -input ../do_sim/my_adder.saif -instance_name DUT -verbose
+report_power > reports/my_adder-post_synth.power
+
+power add -in -inout -internal -out /my_adder_tb/DUT/*
+power report -all -bsaif test.saif
